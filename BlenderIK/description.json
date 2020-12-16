@@ -1,0 +1,10 @@
+{
+  "Name": "ikService",
+  "ID": "123456",
+  "Language": "BlenderPython",
+  "ExecutableName": "Start_IKService.bat",
+  "Author": "Dennis Otte, TWT-GmbH",
+  "Version": "0.1",
+  "Dependencies": [ ],
+  "__isset": { "Dependencies": true }
+}

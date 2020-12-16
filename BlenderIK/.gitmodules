@@ -1,0 +1,4 @@
+[submodule "MMIPython"]
+	path = BlenderIK/MMIPython
+	url = ../core/python.git
+	branch = feature/revisedPythonAdapter

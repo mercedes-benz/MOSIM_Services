@@ -1,0 +1,1554 @@
+{
+	"AvatarID": "asdf363",
+	"Joints": [{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "Root",
+		"Type": 65,
+		"Position": {
+			"X": 1.8626407360944341E-10,
+			"Y": 0.0,
+			"Z": -0.067436870187520981
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": null
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "PelvisCenter",
+		"Type": 11,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.99755960702896118,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.707106769,
+			"Z": 0.0,
+			"W": 0.707106769
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "Root"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "S1L5Joint",
+		"Type": 12,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.12484285980463028,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "PelvisCenter"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "T12L1Joint",
+		"Type": 13,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.10403572022914886,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "S1L5Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "T1T2Joint",
+		"Type": 14,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.29823571443557739,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "T12L1Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "C4C5Joint",
+		"Type": 15,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.076292857527732849,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "T1T2Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "HeadJoint",
+		"Type": 16,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.090164288878440857,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": -1.0,
+			"Z": 0.0,
+			"W": 0.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "C4C5Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "HeadTip",
+		"Type": 17,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.16,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "HeadJoint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftShoulder",
+		"Type": 19,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.0023237839341163635,
+			"Z": -0.20248821377754211
+		},
+		"Rotation": {
+			"X": -0.49999998276561941,
+			"Y": -0.49999998276561941,
+			"Z": 0.49999998276561941,
+			"W": 0.49999998276561941
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "T1T2Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftElbow",
+		"Type": 20,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.27343118190765381,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.707106769,
+			"Z": 0.0,
+			"W": 0.707106769
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftShoulder"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftWrist",
+		"Type": 21,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.27723214030265808,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.707106769,
+			"Z": 0.0,
+			"W": 0.707106769
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftElbow"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftMiddleProximal",
+		"Type": 34,
+		"Position": {
+			"X": 2.0425382147705561E-08,
+			"Y": 0.11851533309704353,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "LeftWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftMiddleMeta",
+		"Type": 33,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.0395754799246788,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftMiddleProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftMiddleDistal",
+		"Type": 35,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03145216777920723,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftMiddleMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftMiddleTip",
+		"Type": 36,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftMiddleDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftIndexProximal",
+		"Type": 30,
+		"Position": {
+			"X": 2.0684855032941409E-08,
+			"Y": 0.120020887078898,
+			"Z": -0.028097996860016888
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "LeftWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftIndexMeta",
+		"Type": 29,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.030107287690043449,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftIndexProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftIndexDistal",
+		"Type": 31,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.027195045724511147,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftIndexMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftIndexTip",
+		"Type": 32,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftIndexDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftRingProximal",
+		"Type": 38,
+		"Position": {
+			"X": 1.9131243284136245E-08,
+			"Y": 0.11100627904945617,
+			"Z": 0.022563167243032149
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "LeftWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftRingMeta",
+		"Type": 37,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.034741777926683426,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftRingProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftRingDistal",
+		"Type": 39,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.028748497366905212,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftRingMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftRingTip",
+		"Type": 40,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftRingDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftLittleProximal",
+		"Type": 42,
+		"Position": {
+			"X": 1.7442034635805637E-08,
+			"Y": 0.10120488957338229,
+			"Z": 0.041280701084258992
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "LeftWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftLittleMeta",
+		"Type": 41,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.024622585624456406,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftLittleProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftLittleDistal",
+		"Type": 43,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.018097389489412308,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftLittleMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftLittleTip",
+		"Type": 44,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftLittleDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftThumbMid",
+		"Type": 25,
+		"Position": {
+			"X": 7.530630627455244E-09,
+			"Y": 0.043695397755087413,
+			"Z": -0.02820170897767434
+		},
+		"Rotation": {
+			"X": -0.38268345594406128,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 0.92387950420379639
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "LeftWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftThumbMeta",
+		"Type": 26,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.035892326384782791,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftThumbMid"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftThumbCarpal",
+		"Type": 27,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.042473066598176956,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftThumbMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftThumbTip",
+		"Type": 28,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftThumbCarpal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightShoulder",
+		"Type": 22,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.0023237839341163635,
+			"Z": 0.20248821377754211
+		},
+		"Rotation": {
+			"X": 0.49999998276561941,
+			"Y": 0.49999998276561941,
+			"Z": 0.49999998276561941,
+			"W": 0.49999998276561941
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "T1T2Joint"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightElbow",
+		"Type": 23,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.27343115210533142,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": -0.707106769,
+			"Z": 0.0,
+			"W": 0.707106769
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightShoulder"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightWrist",
+		"Type": 24,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.27723222970962524,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": -0.707106769,
+			"Z": 0.0,
+			"W": 0.707106769
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightElbow"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightMiddleProximal",
+		"Type": 54,
+		"Position": {
+			"X": -2.0425382147705561E-08,
+			"Y": 0.11851533309704353,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "RightWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightMiddleMeta",
+		"Type": 53,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.039575401693582535,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightMiddleProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightMiddleDistal",
+		"Type": 55,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.031452096998691559,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightMiddleMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightMiddleTip",
+		"Type": 56,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightMiddleDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightIndexProximal",
+		"Type": 50,
+		"Position": {
+			"X": -2.0684855032941409E-08,
+			"Y": 0.120020887078898,
+			"Z": 0.028098523616790771
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "RightWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightIndexMeta",
+		"Type": 49,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.030107159167528152,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightIndexProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightIndexDistal",
+		"Type": 51,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.027194928377866745,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightIndexMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightIndexTip",
+		"Type": 52,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightIndexDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightRingProximal",
+		"Type": 58,
+		"Position": {
+			"X": -1.9131253556628633E-08,
+			"Y": 0.11100633865411122,
+			"Z": -0.022562503814697266
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "RightWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightRingMeta",
+		"Type": 57,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.034741319715976715,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightRingProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightRingDistal",
+		"Type": 59,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.028748787939548492,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightRingMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightRingTip",
+		"Type": 60,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightRingDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightLittleProximal",
+		"Type": 62,
+		"Position": {
+			"X": -1.7442055180790414E-08,
+			"Y": 0.10120500878269238,
+			"Z": -0.041280210018157959
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "RightWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightLittleMeta",
+		"Type": 61,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.024622071534395218,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightLittleProximal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightLittleDistal",
+		"Type": 63,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.018097652122378349,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightLittleMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightLittleTip",
+		"Type": 64,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightLittleDistal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightThumbMid",
+		"Type": 45,
+		"Position": {
+			"X": -7.5306203549628557E-09,
+			"Y": 0.043695338150432368,
+			"Z": 0.0282018780708313
+		},
+		"Rotation": {
+			"X": 0.38268345594406128,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 0.92387950420379639
+		},
+		"Channels": [0,
+		1,
+		2,
+		6,
+		3,
+		4,
+		5],
+		"Parent": "RightWrist"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightThumbMeta",
+		"Type": 46,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03589233011007309,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightThumbMid"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightThumbCarpal",
+		"Type": 47,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.04247298464179039,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightThumbMeta"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightThumbTip",
+		"Type": 48,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.03,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightThumbCarpal"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftHip",
+		"Type": 5,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": -0.11397962272167206
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 1.0,
+			"W": 0.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "PelvisCenter"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftKnee",
+		"Type": 4,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.46768563985824585,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftHip"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftAnkle",
+		"Type": 3,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.45640033483505249,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": -0.5373,
+			"W": 0.84339
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftKnee"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftBall",
+		"Type": 2,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.15126141905784607,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": -0.2164396196603775,
+			"W": 0.97629600763320923
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "LeftAnkle"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "LeftBallTip",
+		"Type": 1,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.08,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "LeftBall"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightHip",
+		"Type": 10,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.11397962272167206
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 1.0,
+			"W": 0.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "PelvisCenter"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightKnee",
+		"Type": 9,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.46768659353256226,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightHip"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightAnkle",
+		"Type": 8,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.456400990486145,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": -0.5373,
+			"W": 0.84339
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightKnee"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightBall",
+		"Type": 7,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.15126200020313263,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": -0.2164396196603775,
+			"W": 0.97629600763320923
+		},
+		"Channels": [6,
+		3,
+		4,
+		5],
+		"Parent": "RightAnkle"
+	},
+	{
+		"__isset": {
+			"Channels": true,
+			"Parent": true
+		},
+		"ID": "RightBallTip",
+		"Type": 6,
+		"Position": {
+			"X": 0.0,
+			"Y": 0.08,
+			"Z": 0.0
+		},
+		"Rotation": {
+			"X": 0.0,
+			"Y": 0.0,
+			"Z": 0.0,
+			"W": 1.0
+		},
+		"Channels": [],
+		"Parent": "RightBall"
+	}]
+}

@@ -1,13 +1,25 @@
 <!-- SPDX-License-Identifier: MIT -->
-# My Project
+
+# MOSIM_Services
+
+![mosim](https://mosim.eu/____impro/1/onewebmedia/MOSIM%20Logo%20white%20background%20150.png?etag=%221b8a-5c57fd19%22&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=150%2B84&extract=0%2B7%2B149%2B59)
+
 
 ## Intended Usage
 
-⚠️ //TODO// Describe your example! Eg: This project is made for cooking the best Tiramisu. It works best with high quality ingredients and the best tools. Please describe your project as accurately and concisely as possible to help others understand your use case.
+This repository contains services for the MOSIM/MMI framework provided in [MOSIM_Core](https://github.com/Daimler/MOSIM_Core).
+A comprehensive overview of the framework is available at [MOSIM ITEA3 Website](https://itea3.org/project/workpackage/document/download/5770/MMU%20concept%20and%20interface%20specification.pdf).
+
+![concept](https://mosim.eu/____impro/1/onewebmedia/Artchitecture.png?etag=W%2F%2217ea6-5d566ea0%22&sourceContentType=image%2Fpng&ignoreAspectRatio&resize=845%2B366&extract=20%2B22%2B801%2B334)
+
+
+
 
 ## Installation
 
-⚠️ //TODO// Add your information and describe how the project can be used.
+All services contained in the repository utilize pre-built binaries of the core framework.
+To utilize the respective service, either the Unity project or the visual studio solution must be built.
+
 
 ## Contributing
 
