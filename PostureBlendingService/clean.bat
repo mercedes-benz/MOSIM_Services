@@ -1,7 +1,7 @@
 @echo off
 REM SPDX-License-Identifier: MIT
 REM The content of this file has been developed in the context of the MOSIM research project.
-REM Original author(s): Janis Sprenger, Bhuvaneshwaran Ilanthirayan
+REM Original author(s): Bhuvaneshwaran Ilanthirayan
 
 REM the ESC sign can be created by pressing left alt + 027 on the num-pad. 
 
@@ -15,24 +15,19 @@ if not defined DEVENV (
   ECHO DEVENV defined as: "%DEVENV%"
 )
 
-REM Build the Visual Studio Project
-"%DEVENV%" .\PostureBlendingService.sln /Build Debug
+REM Clean the Visual Studio Project
+"%DEVENV%" .\PostureBlendingService.sln /Clean
 
-REM If the build was sucessfull, copy all files to the respective build folders. 
+REM If the cleaning is sucessfull, deleting all files from the respective build folders. 
 if %ERRORLEVEL% EQU 0 (
-  IF NOT EXIST .\build (
-    mkdir .\build 
-  ) ELSE (
+  IF EXIST .\build (
     RMDIR /S/Q .\build
-    mkdir .\build
   )
-  REM cmd /c has to be called to prevent xcopy to destroy any coloring of outputs
-  cmd /c xcopy /S .\PostureBlendingService\bin\Debug\* .\build
-    
-  ECHO [92mSuccessfully deployed PostureBlendingService[0m
+
+  ECHO [92mSuccessfully cleaned PostureBlendingService[0m
   exit /b 0
 ) else (
-  ECHO [31mDeployment of PostureBlendingService failed. [0m
+  ECHO [31mCleaning of PostureBlendingService failed. [0m
   exit /b 1
 )
 

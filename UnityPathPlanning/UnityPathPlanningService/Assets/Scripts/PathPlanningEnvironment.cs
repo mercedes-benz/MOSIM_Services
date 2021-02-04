@@ -74,6 +74,26 @@ public class PathPlanningEnvironment
             {
                 Collider collider = UnityColliderFactory.CreateCollider(sceneObject.Collider, sceneObject.Transform);
 
+                //Unity uses the meshes for the nav mesh generation -> Adjust the meshes to match the collider size
+                switch (sceneObject.Collider.Type)
+                {
+                    case MColliderType.Box:
+                        collider.transform.localScale = collider.GetComponent<BoxCollider>().size;
+                        collider.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
+                        break;
+
+                    case MColliderType.Sphere:
+                        SphereCollider sc = collider.GetComponent<SphereCollider>();
+                        collider.transform.localScale = new Vector3(sc.radius*2, sc.radius*2, sc.radius*2);
+                        collider.GetComponent<SphereCollider>().radius = 0.5f;
+                        break;
+ 
+                        //To do -> fix Capsule and cone as well
+                }
+
+
+                collider.name = sceneObject.Name + sceneObject.ID;
+
                 if (collider != null)
                     this.GameObjects.Add(collider.gameObject);
             }
