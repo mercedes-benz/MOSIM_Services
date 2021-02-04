@@ -1,4 +1,7 @@
 REM @echo off
+REM SPDX-License-Identifier: MIT
+REM The content of this file has been developed in the context of the MOSIM research project.
+REM Original author(s): Janis Sprenger, Bhuvaneshwaran Ilanthirayan
 
 IF NOT EXIST blender-2.83.10-windows64.zip (
   powershell -Command "Invoke-WebRequest https://ftp.halifax.rwth-aachen.de/blender/release/Blender2.83/blender-2.83.10-windows64.zip -OutFile blender-2.83.10-windows64.zip"
@@ -14,7 +17,14 @@ IF NOT EXIST build/Blender (
 
 set mypath=%~dp0
 build\Blender\2.83\python\bin\python.exe -m ensurepip
-REM build\Blender\2.83\python\bin\python.exe -m pip install --upgrade pip setuptools wheel
+
+REM This is very hacky. For some reason, the pip installation or any other pip installation fails at the first try.
+REM By starting the initial pip upgrade in advance in a separate window and killing it after some time, we can circumvent this problem. 
+REM This requires further testing, in order to test wether the threshold of 10s is long enough on different systems. 
+start "install pip" build\Blender\2.83\python\bin\python.exe -m pip install --upgrade pip
+timeout /t 10
+taskkill /FI "WindowTitle eq install pip*" /T /F
+
 
 cd ..\..\Core\Framework\LanguageSupport\python
 call .\deploy.bat "%mypath%\build\Blender\2.83\python\bin\python.exe -m pip"
