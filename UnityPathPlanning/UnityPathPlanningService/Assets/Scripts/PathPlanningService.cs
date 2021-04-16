@@ -7,10 +7,8 @@ using MMICSharp.Common;
 using MMICSharp.Services;
 using MMIStandard;
 using MMIUnity;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,6 +19,9 @@ using Logger = MMICSharp.Adapter.Logger;
 /// </summary>
 public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
 {
+
+    public Transform Plane;
+
     private readonly Mutex agentMutex = new Mutex();
     private readonly Mutex environmentMutex = new Mutex();
 
@@ -37,7 +38,7 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
     /// <summary>
     /// The default enviornment that is used if no one is specified
     /// </summary>
-    private PathPlanningEnvironment defaultEnvironment = new PathPlanningEnvironment("default");
+    private PathPlanningEnvironment defaultEnvironment;
 
     /// <summary>
     /// The address where the service is hosted 
@@ -95,6 +96,12 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
     /// Flag inidcates whether the service is a server build (not running with ui)
     /// </summary>
     public static bool IsServerBuild = false;
+
+
+    private void Awake()
+    {
+        this.defaultEnvironment= new PathPlanningEnvironment("default", this.Plane);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -243,6 +250,14 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
             switch (vector.Values.Count)
             {
                 case 2:
+
+                    geometryConstraint.ParentToConstraint = new MTransform()
+                    {
+                        ID = System.Guid.NewGuid().ToString(),
+                        Position = new MVector3(vector.Values[0], 0f, vector.Values[1]),
+                        Rotation = new MQuaternion(0, 0, 0, 1)
+                    };
+
                     //Create new position interval with a defined tolerance
                     positionInterval = new MVector3(vector.Values[0], 0f, vector.Values[1]).ToMInterval3(tolerance);
 
@@ -252,6 +267,13 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
                     break;
 
                 case 3:
+                    geometryConstraint.ParentToConstraint = new MTransform()
+                    {
+                        ID = System.Guid.NewGuid().ToString(),
+                        Position = new MVector3(vector.Values[0], vector.Values[1], vector.Values[2]),
+                        Rotation = new MQuaternion(0, 0, 0, 1)
+                    };
+
                     //Create new position interval with a defined tolerance
                     positionInterval = new MVector3(vector.Values[0], vector.Values[1], vector.Values[2]).ToMInterval3(tolerance);
                     break;
@@ -265,65 +287,6 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
         }
 
         //Return the compute results (if available)
-        return result;
-    }
-
-
-    /// <summary>
-    /// Interface which is remotely accessed.
-    /// The method computes the direction vector(including the velocity) to steer to the goal position
-    /// </summary>
-    /// <param name="current"></param>
-    /// <param name="goal"></param>
-    /// <param name="sceneObjects"></param>
-    /// <param name="properties"></param>
-    /// <returns></returns>
-    public MVector ComputePathDirection(MVector current, MVector goal, List<MSceneObject> sceneObjects, Dictionary<string, string> properties)
-    {
-        //Setup/reuse the environment
-        this.SetupEnvironment(sceneObjects, properties);
-
-        //Get the current and goal position
-        Vector3 currentPosition = current.Values.Count == 3 ? new Vector3((float)current.Values[0], (float)current.Values[1], (float)current.Values[2]) : new Vector3((float)current.Values[0], 0, (float)current.Values[1]);
-        Vector3 goalPosition = goal.Values.Count == 3 ? new Vector3((float)goal.Values[0], (float)goal.Values[1], (float)goal.Values[2]) : new Vector3((float)goal.Values[0], 0, (float)goal.Values[1]);
-
-        //Result vector describing the velocity
-        MVector result = new MVector()
-        {
-            Values = new List<double>()
-        };
-
-        //Enter restricted area in which the agent is manipulated
-        agentMutex.WaitOne();
-
-        //Perform update of agent on main thread
-        MainThreadDispatcher.Instance.ExecuteBlocking(() =>
-        {
-            //Set the current agent position
-            this.agent.transform.position = currentPosition;
-
-            //Set the goal position of the agent
-            this.agent.SetDestination(goalPosition);
-
-            if (current.Values.Count == 3)
-            {
-                result.Values.Add(this.agent.velocity.x);
-                result.Values.Add(this.agent.velocity.y);
-                result.Values.Add(this.agent.velocity.z);
-
-            }
-
-            if (current.Values.Count == 2)
-            {
-                result.Values.Add(this.agent.velocity.x);
-                result.Values.Add(this.agent.velocity.z);
-            }
-        });
-
-        //Exit restricted area
-        agentMutex.ReleaseMutex();
-
-        //Return the computed result
         return result;
     }
 
@@ -367,7 +330,7 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
 
                 //Add the new environment if not already available
                 if (!this.environments.ContainsKey(pathPlanningID))
-                    this.environments.TryAdd(pathPlanningID, new PathPlanningEnvironment(pathPlanningID));
+                    this.environments.TryAdd(pathPlanningID, new PathPlanningEnvironment(pathPlanningID,this.Plane));
 
                 //Get the respective environment
                 this.environments.TryGetValue(pathPlanningID, out newEnvironment);
@@ -404,107 +367,6 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
     }
 
 
-
-    #region legacy
-
-    /// <summary>
-    /// Method is part of the MPathPlanning Interface and is called remotely.
-    /// </summary>
-    /// <param name="start"></param>
-    /// <param name="goal"></param>
-    /// <param name="sceneObjects"></param>
-    /// <param name="properties"></param>
-    /// <returns></returns>
-    public List<MVector> ComputePathLegacy(MVector start, MVector goal, List<MSceneObject> sceneObjects, Dictionary<string, string> properties)
-    {
-        List<MVector> results = new List<MVector>();
-        bool success = false;
-
-        //Check if properties are defined
-        if (properties != null)
-        {
-            UnityLogger.Log(Log_level.L_DEBUG, "Compute path called with the following properties:");
-
-            foreach (var entry in properties)
-            {
-                UnityLogger.Log(Log_level.L_DEBUG, entry.Key + " : " + entry.Value);
-            }
-
-
-            //Check if a path planning ID is available
-            bool hasPathPlanningID = properties.ContainsKey("pathPlanningID");
-
-
-            //Execute on main thread
-            MainThreadDispatcher.Instance.ExecuteBlocking(() =>
-            {
-                bool reuseEnvironment = false;
-                string pathPlanningID = properties["pathPlanningID"];
-
-                PathPlanningEnvironment newEnvironment = defaultEnvironment;
-
-                if (hasPathPlanningID)
-                {
-                    properties.TryGetBool("reuseEnvironment", out reuseEnvironment);
-
-                    //Add the new environment if not already available
-                    if (!this.environments.ContainsKey(pathPlanningID))
-                        this.environments.TryAdd(pathPlanningID, new PathPlanningEnvironment(pathPlanningID));
-
-                    //Get the respective environment
-                    this.environments.TryGetValue(pathPlanningID, out newEnvironment);
-
-                    UnityLogger.Log(Log_level.L_DEBUG, $"Reusing the environment {pathPlanningID}");
-
-
-                    //If the environment changes
-                    if (this.activeEnvironment != newEnvironment)
-                    {
-                        //Deactivate the current environment
-                        this.activeEnvironment?.Deactivate();
-
-                        //Assign the new environment as active
-                        this.activeEnvironment = newEnvironment;
-                    }
-                }
-
-                //Setup the environment if not initalized or reuse disabled
-                if (!this.activeEnvironment.IsInitialized || !reuseEnvironment)
-                {
-                    UnityLogger.Log(Log_level.L_DEBUG, $"Setup the environment {pathPlanningID}");
-
-                    this.activeEnvironment.Setup(sceneObjects);
-                }
-
-                //Active the new 
-                this.activeEnvironment.Activate();
-
-                //Switch depending on the mode
-                if (properties.ContainsKey("mode"))
-                {
-                    switch (properties["mode"])
-                    {
-                        case "2D":
-                            results = this.ComputePathNavMeshAgent2D(new MVector2(start.Values[0], start.Values[1]), new MVector2(goal.Values[0], goal.Values[1]), out success);
-                            break;
-                        case "3D":
-                            results = this.ComputePathNavMeshAgent3D(new MVector3(start.Values[0], start.Values[1], start.Values[2]), new MVector3(goal.Values[0], goal.Values[1], goal.Values[2]), out success);
-                            break;
-                        default:
-                            UnityLogger.Log(Log_level.L_ERROR, $"Specified mode { properties["mode"]} is not supported");
-                            break;
-                    }
-                }
-            });
-
-        }
-
-        //Return the compute results (if available)
-        return results;
-
-    }
-
-    #endregion
 
 
 

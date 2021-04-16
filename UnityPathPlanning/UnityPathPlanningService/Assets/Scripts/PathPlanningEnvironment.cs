@@ -2,12 +2,13 @@
 // The content of this file has been developed in the context of the MOSIM research project.
 // Original author(s): Felix Gaisbauer
 
+using MMICSharp.Adapter;
 using MMIStandard;
 using MMIUnity;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
+using static PathPlanningService;
 
 /// <summary>
 /// Class representing a path planning environment which contains a set of scene objects
@@ -30,6 +31,11 @@ public class PathPlanningEnvironment
     public List<GameObject> GameObjects = new List<GameObject>();
 
     /// <summary>
+    /// The utilized plane
+    /// </summary>
+    public Transform Plane;
+
+    /// <summary>
     /// Flag specifies whether the evnironment has been initialized
     /// </summary>
     public bool IsInitialized = false;
@@ -40,13 +46,25 @@ public class PathPlanningEnvironment
     public bool IsActive = false;
 
     /// <summary>
+    /// The plane size of the path planning environment
+    /// </summary>
+    public Vector3 PlaneSize = new Vector3(30, 0, 30);
+
+    /// <summary>
+    /// The offset of the avatar
+    /// </summary>
+    public Vector3 Offset = Vector3.zero;
+
+    /// <summary>
     /// Basic constructor
     /// </summary>
     /// <param name="id"></param>
-    public PathPlanningEnvironment(string id)
+    public PathPlanningEnvironment(string id, Transform groundPlane)
     {
         this.ID = id;
+        this.Plane = groundPlane;
     }
+
 
     /// <summary>
     /// Sets up the colliders
@@ -62,17 +80,33 @@ public class PathPlanningEnvironment
             GameObject.Destroy(obj);
         }
 
+        //Clear all present gameobjects
         this.GameObjects.Clear();
 
+        //Skip if no scene objects are specified
         if (sceneObjects == null)
             return;
 
-        //Create new colliders
-        foreach (MSceneObject sceneObject in sceneObjects)
+        if (sceneObjects.Count > 0)
+        {
+            Vector3 min = new Vector3((float)sceneObjects.Select(s => s.Transform.Position.X).Min(), 0, (float)sceneObjects.Select(s => s.Transform.Position.Z).Min());
+            Vector3 max = new Vector3((float)sceneObjects.Select(s => s.Transform.Position.X).Max(), 0, (float)sceneObjects.Select(s => s.Transform.Position.Z).Max());
+
+
+            //To do -> Determine the dimensions
+            this.PlaneSize = new Vector3(Mathf.Max(30, (max.x - min.x)+10), 0, Mathf.Max(30, (max.z - min.z))+10);
+
+            UnityLogger.Log(Log_level.L_DEBUG, $"Setting the environment dimensions to " + this.PlaneSize.ToString());
+        }
+
+        //Create new colliders and gameobjects for all MSceneObjects that possess a collider
+        foreach (MSceneObject sceneObject in sceneObjects.Where(s=>s.Collider!=null))
         {
             try
             {
+                //Create a collider using the UnityColliderFactory helper class 
                 Collider collider = UnityColliderFactory.CreateCollider(sceneObject.Collider, sceneObject.Transform);
+
 
                 //Unity uses the meshes for the nav mesh generation -> Adjust the meshes to match the collider size
                 switch (sceneObject.Collider.Type)
@@ -85,17 +119,28 @@ public class PathPlanningEnvironment
                     case MColliderType.Sphere:
                         SphereCollider sc = collider.GetComponent<SphereCollider>();
                         collider.transform.localScale = new Vector3(sc.radius*2, sc.radius*2, sc.radius*2);
-                        collider.GetComponent<SphereCollider>().radius = 0.5f;
+                        sc.radius = 0.5f;
                         break;
- 
-                        //To do -> fix Capsule and cone as well
+
+                    case MColliderType.Capsule:
+                        CapsuleCollider cc = collider.GetComponent<CapsuleCollider>();
+                        collider.transform.localScale = new Vector3(cc.transform.localScale.x * cc.radius * 2, cc.transform.localScale.y * cc.radius * 2, cc.transform.localScale.z * cc.radius * 2);
+                        cc.radius = 0.5f;
+                        break;
+
+                    case MColliderType.Cylinder:
+                        CapsuleCollider cyc = collider.GetComponent<CapsuleCollider>();
+                        collider.transform.localScale = new Vector3(cyc.transform.localScale.x * cyc.radius * 2, cyc.transform.localScale.y * cyc.radius * 2, cyc.transform.localScale.z * cyc.radius * 2);
+                        cyc.radius = 0.5f;
+                        break;
                 }
-
-
-                collider.name = sceneObject.Name + sceneObject.ID;
 
                 if (collider != null)
                     this.GameObjects.Add(collider.gameObject);
+
+                collider.name = sceneObject.Name + sceneObject.ID;
+
+
             }
             catch (System.Exception e)
             {
@@ -113,11 +158,17 @@ public class PathPlanningEnvironment
     /// </summary>
     public void Activate()
     {
-        foreach (GameObject go in this.GameObjects)
-        {
-            go.SetActive(true);
-        }
+        //Adjust the plane size
+        this.Plane.transform.localScale = new Vector3(this.PlaneSize.x/5, 1, this.PlaneSize.z/5); // /10 *2
 
+        UnityLogger.Log(Log_level.L_DEBUG, $"Updated plane scale: " + this.Plane.transform.localScale);
+
+
+        //Activate all game objects
+        foreach (GameObject go in this.GameObjects)
+            go.SetActive(true);
+
+        //Set flag to true
         this.IsActive = true;
     }
 
@@ -126,11 +177,11 @@ public class PathPlanningEnvironment
     /// </summary>
     public void Deactivate()
     {
+        //Disable all game objects
         foreach (GameObject go in this.GameObjects)
-        {
             go.SetActive(false);
-        }
 
+        //Set flag to false
         this.IsActive = false;
     }
 }

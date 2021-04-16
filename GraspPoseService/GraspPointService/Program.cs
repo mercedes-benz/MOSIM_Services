@@ -1,16 +1,14 @@
-// SPDX-License-Identifier: MIT
-// The content of this file has been developed in the context of the MOSIM research project.
-// Original author(s): Janis Sprenger
-
-using System;
+﻿using System;
+using System.Collections.Generic;
 using MMIStandard;
 using MMICSharp.Common;
 using MMICSharp.Adapter;
 
-namespace RetargetingServiceServer
-{
 
-    class Program
+
+namespace GraspPointService
+{
+    public class Program
     {
 
         /// The address of the thrift server
@@ -23,7 +21,7 @@ namespace RetargetingServiceServer
         private static string mmuPath = "";
 
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             //Create a new logger instance
             Logger.Instance = new Logger
@@ -56,10 +54,9 @@ namespace RetargetingServiceServer
 
             Console.WriteLine($"Adapter is reachable at: {address.Address}:{address.Port}");
             Console.WriteLine($"Register is reachable at: {mmiRegisterAddress.Address}:{mmiRegisterAddress.Port}");
-            Console.WriteLine($"MMUs will be loaded from: {mmuPath}");
             Console.WriteLine(@"_________________________________________________________________");
 
-            Console.WriteLine("Retargeting Service");
+            Console.WriteLine("Grasp Point Determination Service");
             string sessionID = Guid.NewGuid().ToString();
             //ServiceAccess serviceAccess = new ServiceAccess(new MIPAddress("127.0.0.1", 9009), sessionID);
             ServiceAccess serviceAccess = new ServiceAccess(mmiRegisterAddress, sessionID);
@@ -67,8 +64,8 @@ namespace RetargetingServiceServer
             try
             {
                 //int servicePort = 8886;
-                RetargetingInterfaceWrapper handler = new RetargetingInterfaceWrapper(address.Address, address.Port);
-                var server = new MMIRetargetingThriftServer(address.Port, handler);
+                GraspPointService handler = new GraspPointService(address, mmiRegisterAddress);
+                var server = new GraspServer(address.Port, handler);
                 Console.WriteLine("Register the service");
                 reg.RegisterService(handler.ServiceDescription);
 
@@ -80,42 +77,6 @@ namespace RetargetingServiceServer
                 Console.WriteLine(x.StackTrace);
             }
             Console.WriteLine("done.");
-
-
-
-            //Create the adapter description -> To do load from file in future
-            //MAdapterDescription adapterDescription = new MAdapterDescription()
-            //{
-            //    Name = "CSharpAdapter",
-            //    Addresses = new List<MIPAddress>() { address },
-            //    ID = "438543643-436436435-2354235",
-            //    Language = "C#",
-            //    Parameters = new List<MParameter>(),
-            //    Properties = new Dictionary<string, string>()
-            //};
-
-
-            ////Create a session cleaner for the utilized session data
-            //sessionCleaner = new SessionCleaner(sessionData)
-            //{
-            //    //Session shoould be cleaned after 60 minutes
-            //    Timeout = TimeSpan.FromMinutes(60),
-
-            //    //The session cleaner should check every minute
-            //    UpdateTime = TimeSpan.FromMinutes(1)
-            //};
-
-            ////Start the session cleaner
-            //sessionCleaner.Start();
-
-            //Create a new adapter controller which scans the filesystem and checks for MMUs there
-            //using (AdapterController adapterController = new AdapterController(sessionData, adapterDescription, mmiRegisterAddress, new FileBasedMMUProvider(sessionData, new List<string>() { mmuPath }, new List<string>() { "C#", "C++CLR" }), new CSharpMMUInstantiator()))
-            //{
-            //    //Start the adapter controller
-            //    adapterController.Start();
-
-            //    Console.ReadLine();
-            //}
         }
 
         /// <summary>
@@ -169,13 +130,6 @@ namespace RetargetingServiceServer
                           mmiRegisterAddress.Address = addr[0];
                           mmiRegisterAddress.Port = int.Parse(addr[1]);
                       }
-                  }
-                },
-
-                { "m|mmupath=", "The path of the mmu folder.",
-                  v =>
-                  {
-                        mmuPath = v;
                   }
                 },
             };

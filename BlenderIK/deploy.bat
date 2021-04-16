@@ -1,7 +1,8 @@
-REM @echo off
+@echo off
 REM SPDX-License-Identifier: MIT
 REM The content of this file has been developed in the context of the MOSIM research project.
 REM Original author(s): Janis Sprenger, Bhuvaneshwaran Ilanthirayan
+
 
 IF NOT EXIST blender-2.83.10-windows64.zip (
   powershell -Command "Invoke-WebRequest https://ftp.halifax.rwth-aachen.de/blender/release/Blender2.83/blender-2.83.10-windows64.zip -OutFile blender-2.83.10-windows64.zip"
