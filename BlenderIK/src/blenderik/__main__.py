@@ -107,7 +107,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=numeric_level, handlers=[fileLogger, streamLogger])
     
     # Read CLI-Arguments
-    if Path(sys.argv[0]).name == 'blender.exe':
+    if Path(sys.argv[0]).name.split(".")[0] == 'blender':
         
         raw_args = sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
     else:
