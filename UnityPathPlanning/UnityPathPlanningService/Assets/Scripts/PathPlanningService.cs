@@ -197,6 +197,8 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
             PolygonPoints = new List<MGeometryConstraint>()
         };
 
+
+
         List<MVector> pathPoints = new List<MVector>();
         bool success = false;
 
@@ -208,6 +210,18 @@ public class PathPlanningService : MonoBehaviour, MPathPlanningService.Iface
             foreach (var entry in properties)
             {
                 UnityLogger.Log(Log_level.L_DEBUG, entry.Key + " : " + entry.Value);
+            }
+
+            // The following does not work. If the height is set to 2m as default, the navmesh is generated over small obstacles. 
+            // Dynamically setting the height, apparently does not work. 
+            if (properties.ContainsKey("height"))
+            {
+                var height = properties["height"];
+                float fHeight;
+                if (float.TryParse(height, out fHeight))
+                {
+                    this.agent.height = fHeight;
+                }
             }
 
 
