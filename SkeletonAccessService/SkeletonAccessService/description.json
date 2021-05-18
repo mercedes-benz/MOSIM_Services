@@ -1,0 +1,10 @@
+{
+  "Name": "StandaloneSkeletonAccess",
+  "ID": "7889d37f-60fb-1wsy-9015-f4adde70a44d",
+  "Language": "C#",
+  "ExecutableName": "SkeletonAccessService.exe",
+  "Author": "Janis Sprenger, DFKI",
+  "Version": "1.0",
+  "Dependencies": [ ],
+  "__isset": { "Dependencies": true }
+}
