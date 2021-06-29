@@ -1,0 +1,10 @@
+{
+  "Name": "postureBlendingService",
+  "ID": "7819d37f-60fb-45da-9015-f4adde70a44d",
+  "Language": "UnityC#",
+  "ExecutableName": "PostureBlendingService.exe",
+  "Author": "Felix Gaisbauer, Daimler AG",
+  "Version": "1.0",
+  "Dependencies": [],
+  "__isset": { "Dependencies": true }
+}

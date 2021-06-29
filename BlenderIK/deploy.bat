@@ -23,7 +23,7 @@ REM This is very hacky. For some reason, the pip installation or any other pip i
 REM By starting the initial pip upgrade in advance in a separate window and killing it after some time, we can circumvent this problem. 
 REM This requires further testing, in order to test wether the threshold of 10s is long enough on different systems. 
 start "install pip" build\Blender\2.83\python\bin\python.exe -m pip install --upgrade pip
-timeout /t 10
+timeout /t 30
 taskkill /FI "WindowTitle eq install pip*" /T /F
 
 
