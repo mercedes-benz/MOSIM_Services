@@ -33,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MMICSharp">
-      <HintPath>.\MMICSharp.dll</HintPath>
+      <HintPath>..\..\MMICSharp\MMICSharp.dll</HintPath>
     </Reference>
     <Reference Include="MMIStandard">
-      <HintPath>.\MMIStandard.dll</HintPath>
+      <HintPath>..\..\MMICSharp\MMIStandard.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Thrift, Version=0.11.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Thrift.dll</HintPath>
+      <HintPath>..\..\MMICSharp\Thrift.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

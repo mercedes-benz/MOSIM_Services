@@ -62,7 +62,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\System.Threading.Tasks.Extensions.dll</HintPath>
+      <HintPath>..\..\MMICSharp\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Thrift, Version=0.11.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\Thrift.dll</HintPath>
+      <HintPath>..\..\MMICSharp\Thrift.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
