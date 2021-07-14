@@ -15,6 +15,10 @@ if not defined DEVENV (
   ECHO DEVENV defined as: "%DEVENV%"
 )
 
+
+REM restoring nuget
+"%MSBUILD%" -t:restore -flp:logfile=restore.log
+
 REM Build the Visual Studio Project
 "%DEVENV%" .\CoordinateSystemMapper.sln /Build Debug
 
