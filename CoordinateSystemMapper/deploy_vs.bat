@@ -4,6 +4,12 @@ REM The content of this file has been developed in the context of the MOSIM rese
 REM Original author(s): Janis Sprenger, Bhuvaneshwaran Ilanthirayan
 
 REM the ESC sign can be created by pressing left alt + 027 on the num-pad. 
+ECHO.
+ECHO _______________________________________________________
+ECHO [33mdeploy_vs.bat[0m at %cd%\deploy_vs.bat Deploying the CoordinateSystemMapper. 
+ECHO _______________________________________________________
+ECHO.
+
 
 REM Checking environment variables
 if not defined DEVENV (
@@ -12,8 +18,14 @@ if not defined DEVENV (
   pause
   exit /b 1
 ) else (
-  ECHO DEVENV defined as: "%DEVENV%"
+  if not exist "%DEVENV%" (
+    ECHO Visual Studio does not seem to be installed at "%DEVENV%" or path name in deploy_variables.bat is wrong.
+    exit /b 2
+  )
 )
+
+REM restoring nuget
+"%MSBUILD%" -t:restore -flp:logfile=restore.log
 
 REM Build the Visual Studio Project
 "%DEVENV%" .\CoordinateSystemMapper.sln /Build Debug

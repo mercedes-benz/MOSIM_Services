@@ -5,6 +5,13 @@ REM Original author(s): Janis Sprenger, Bhuvaneshwaran Ilanthirayan
 
 REM the ESC sign can be created by pressing left alt + 027 on the num-pad. 
 
+ECHO.
+ECHO _______________________________________________________
+ECHO [33mdeploy_vs.bat[0m at %cd%\deploy_vs.bat Deploying the Retargeting Service. 
+ECHO _______________________________________________________
+ECHO.
+
+
 REM Checking environment variables
 if not defined DEVENV (
   ECHO [31mDEVENV Environment variable pointing to the Visual Studio 2017 devenv.exe is missing.[0m
@@ -12,7 +19,10 @@ if not defined DEVENV (
   pause
   exit /b 1
 ) else (
-  ECHO DEVENV defined as: "%DEVENV%"
+  if not exist "%DEVENV%" (
+    ECHO Visual Studio does not seem to be installed at "%DEVENV%" or path name in deploy_variables.bat is wrong.
+    exit /b 2
+  )
 )
 
 REM Build the Visual Studio Project
