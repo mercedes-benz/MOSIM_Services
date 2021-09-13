@@ -47,5 +47,3 @@ if %ERRORLEVEL% EQU 0 (
   ECHO [31mDeployment of CoordinateSystemMapper failed. [0m
   exit /b 1
 )
-
-pause
