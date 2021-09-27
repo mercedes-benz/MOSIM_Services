@@ -30,5 +30,3 @@ if %ERRORLEVEL% EQU 0 (
   ECHO [31mCleaning of PostureBlendingService failed. [0m
   exit /b 1
 )
-
-pause
