@@ -159,7 +159,7 @@ class EIKServer(IKService):
     def init_thrift(self, address, port, nthreads=20):
         logger.info("Initalizing Thrift-Server at %s::%i with %i threads.", address, port, nthreads)
         IKProcessor = MInverseKinematicsService.Processor(self)
-        trans_svr   = TSocket.TServerSocket(host=address, port=port) 
+        trans_svr   = TSocket.TServerSocket(port=port) # Deleted host=address because it cause trouble in Docker images and does not make any sense anyway.
         # self.ownAddress = MIPAddress(Address=address, Port=port)
         trans_fac   = TTransport.TBufferedTransportFactory()
         proto_fac   = TCompactProtocol.TCompactProtocolFactory()
