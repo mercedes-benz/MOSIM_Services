@@ -16,7 +16,8 @@ if not defined DEVENV (
 )
 
 REM Build the Visual Studio Project
-"%DEVENV%" .\SkeletonAccessService.sln /Clean
+"%MSBUILD%" .\SkeletonAccessService.sln -t:clean -flp:logfile=clean.log
+
 
 REM If the cleaning is sucessfull, delete all files to the respective build folders. 
 if %ERRORLEVEL% EQU 0 (

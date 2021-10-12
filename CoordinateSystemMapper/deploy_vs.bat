@@ -23,12 +23,26 @@ if not defined DEVENV (
     exit /b 2
   )
 )
+if not defined MSBUILD (
+  ECHO [31mMSBUILD Environment variable pointing to the Visual Studio 2017 MSBuild.exe is missing.[0m
+  ECHO    e.g. "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe"
+  pause
+  exit /b 1
+) else (
+  if not exist "%MSBUILD%" (
+    ECHO    MSBUILD: [31mMISSING[0m at "%MSBUILD%"
+    ECHO [31mPlease update the deploy_variables.bat script with a valid path![0m
+	exit /b 2
+    )
+  )
+)
 
 REM restoring nuget
 "%MSBUILD%" -t:restore -flp:logfile=restore.log
 
 REM Build the Visual Studio Project
-"%DEVENV%" .\CoordinateSystemMapper.sln /Build Debug
+REM "%MSBUILD%" .\CoordinateSystemMapper.sln -t:Build -p:Configuration=Debug -flp:logfile=build.log
+"%MSBUILD%" .\CoordinateSystemMapper.sln -t:Build -p:Configuration=Debug -flp:logfile=build.log
 
 REM If the build was sucessfull, copy all files to the respective build folders. 
 if %ERRORLEVEL% EQU 0 (

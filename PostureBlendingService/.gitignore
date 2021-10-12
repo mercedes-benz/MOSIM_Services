@@ -39,3 +39,4 @@ bld/
 *.ide-wal
 
 build
+*.log

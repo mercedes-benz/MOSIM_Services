@@ -38,6 +38,7 @@ DEFAULT_CONFIG = {
         "initialPosture": "intermediate.mos",
     },
     "IKSERVER": {
+        "socket_address": "127.0.0.1",
         "address": "127.0.0.1",
         "port": "8904"
     },
@@ -57,7 +58,10 @@ def run(config, cli_args):
         ip, port = cli_args.address.split(':')
         logger.info("Address: Overwrite Config with CLI-Argument %s:%s", ip, port)
         config['IKSERVER']['address'] = ip
+        config['IKSERVER']['socket_address'] = ip
         config['IKSERVER']['port'] = port
+    if cli_args.listenAll:
+        config["IKSERVER"]["socket_address"] = ""
     
     # read description.json    
     with Path("description.json").open() as file:
@@ -68,6 +72,7 @@ def run(config, cli_args):
         
     IKServer.init_thrift(
         config.get('IKSERVER', 'address'), 
+        config.get('IKSERVER', 'socket_address'), 
         config.getint('IKSERVER', 'port')
     )
         
@@ -137,6 +142,7 @@ if __name__ == '__main__':
     run_parser.add_argument('-d', '--description',
         help="Path to the service description",
         default='')
+    run_parser.add_argument('-l', '--listenAll', action='store_true', default=False)
     run_parser.set_defaults(func=run)
         
     cmd_args = argparser.parse_args(raw_args)
